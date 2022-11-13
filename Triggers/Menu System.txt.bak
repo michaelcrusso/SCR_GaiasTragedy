@@ -1,0 +1,72 @@
+
+Trigger("Player 2"){
+Conditions:
+	Bring("Player 2", "Yggdrasill (Overlord)", "PassiveP2", Exactly, 1);
+
+Actions:
+	Move Unit("Player 2", "Yggdrasill (Overlord)", 1, "PassiveP2", "PassiveP2");
+	Comment("Hold passive 2");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 3"){
+Conditions:
+	Bring("Player 3", "Yggdrasill (Overlord)", "PassiveP3", Exactly, 1);
+
+Actions:
+	Move Unit("Player 3", "Yggdrasill (Overlord)", 1, "PassiveP3", "PassiveP3");
+	Comment("Hold passive 3");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 4"){
+Conditions:
+	Bring("Player 4", "Yggdrasill (Overlord)", "PassiveP4", Exactly, 1);
+
+Actions:
+	Move Unit("Player 4", "Yggdrasill (Overlord)", 1, "PassiveP4", "PassiveP4");
+	Comment("Hold passive 4");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 2"){
+Conditions:
+	Bring("Player 2", "Yggdrasill (Overlord)", "ActiveP2", Exactly, 1);
+
+Actions:
+	Move Unit("Player 2", "Yggdrasill (Overlord)", 1, "ActiveP2", "ActiveP2");
+	Comment("Hold active 2");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 3"){
+Conditions:
+	Bring("Player 3", "Yggdrasill (Overlord)", "ActiveP3", Exactly, 1);
+
+Actions:
+	Move Unit("Player 3", "Yggdrasill (Overlord)", 1, "ActiveP3", "ActiveP3");
+	Comment("Hold active 3");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 4"){
+Conditions:
+	Bring("Player 4", "Yggdrasill (Overlord)", "ActiveP4", Exactly, 1);
+
+Actions:
+	Move Unit("Player 4", "Yggdrasill (Overlord)", 1, "ActiveP4", "ActiveP4");
+	Comment("Hold active 4");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//

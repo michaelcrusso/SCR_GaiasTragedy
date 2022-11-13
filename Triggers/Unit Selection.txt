@@ -1,0 +1,127 @@
+//<Sharpshooter Selection//>
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Alexei Stukov (Ghost)", "PassiveP1", Exactly, 1);
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Ground", Exactly, 1);
+	Bring("Player 1", "Terran Civilian", "Sharpshooter Info", Exactly, 1);
+	Deaths("Player 1", "Terran Beacon", Exactly, 2);
+
+Actions:
+	Set Deaths("Player 1", "Terran Beacon", Set To, 3);
+	Center View("Buy Sharpshooter");
+	Display Text Message(Always Display, "This is the sharpshooter. He is very cool. To buy him, switch your MCCS to active\r\nmode and select interact once again. To exit and view another power armor, simply\r\nselect interact a second time in passive mode.");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Invalid Location", Exactly, 1);
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Ground", Exactly, 1);
+	Deaths("Player 1", "Terran Beacon", At least, 3);
+
+Actions:
+	Remove Unit("Player 1", "Terran Civilian");
+	Create Unit("Player 1", "Terran Ghost", 1, "Sharpshooter Info");
+	Display Text Message(Always Display, "You have selected the sharpshooter. This concludes the brief tutorial phase of the\r\nMCCS system. You are now free to explore the world of Gaia II!");
+	Set Deaths("Player 1", "Terran Beacon", Set To, 0);
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Alexei Stukov (Ghost)", "PassiveP1", Exactly, 1);
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Ground", Exactly, 1);
+	Deaths("Player 1", "Terran Beacon", Exactly, 3);
+
+Actions:
+	Set Deaths("Player 1", "Terran Beacon", Set To, 4);
+	Center View("Create Mercs");
+	Display Text Message(Always Display, "You have exited the Sharpshooter selection menu.");
+	Preserve Trigger();
+	Move Unit("Player 1", "Terran Civilian", All, "Sharpshooter Info", "Create Mercs");
+	Display Text Message(Always Display, "BOOM BOOM BOOM");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Alexei Stukov (Ghost)", "PassiveP1", Exactly, 1);
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Ground", Exactly, 1);
+	Bring("Player 1", "Terran Civilian", "Sharpshooter Info", Exactly, 1);
+	Deaths("Player 1", "Terran Beacon", Exactly, 4);
+
+Actions:
+	Center View("Buy Sharpshooter");
+	Display Text Message(Always Display, "This is the sharpshooter. He is very cool. To buy him, switch your MCCS to active\r\nmode and select interact once again. To exit and view another power armor, simply\r\nselect interact a second time in passive mode.");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Invalid Location", Exactly, 1);
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Ground", Exactly, 1);
+	Deaths("Player 1", "Terran Beacon", Exactly, 4);
+
+Actions:
+	Remove Unit("Player 1", "Terran Civilian");
+	Create Unit("Player 1", "Terran Ghost", 1, "Sharpshooter Info");
+	Display Text Message(Always Display, "You have selected the sharpshooter.");
+	Set Deaths("Player 1", "Terran Beacon", Set To, 0);
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Never();
+
+Actions:
+	Display Text Message(Always Display, "Exited Sharpshooter selection menu.");
+	Move Unit("Current Player", "Terran Civilian", 1, "Sharpshooter Info", "Create Mercs");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1", "Player 2", "Player 3", "Player 4"){
+Conditions:
+	Bring("Current Player", "Terran Civilian", "Stop", At least, 1);
+
+Actions:
+	Display Text Message(Always Display, "You must acquire a MechaCorp power armor suit before leaving the area.");
+	Move Unit("Current Player", "Terran Civilian", All, "Stop", "Create Mercs");
+	Preserve Trigger();
+	Comment("Pick class first");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Current Player", "Terran Civilian", "Sharpshooter Info", Exactly, 1);
+
+Actions:
+	Display Text Message(Always Display, "Before purchasing a MechaCorp power armor, you must first read the description.\r\n\r\nWe'll use this opportunity to get you acquainted with the system you'll use to interact\r\nwith the rest of Gaia II - The MechaCorp Combat Suite, or MCCS for short.");
+	Set Deaths("Player 1", "Terran Beacon", Set To, 1);
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Deaths("Player 1", "Terran Beacon", Exactly, 1);
+
+Actions:
+	Center View("PassiveP1");
+	Display Text Message(Always Display, "This is your MechaCorp Combat Suite, which you will use throughout your journey.\r\n\r\nNote: You MUST hotkey your MCCS before continuing!\r\n\r\nYou will notice you currently have two options: The Active/Passive switch, and \r\nInteract/Talk/Use.\r\n\r\nSwitching from passive to active mode will enable you to interact with the world\r\ndifferently. Select your interaction option to view information about the power armor\r\nyou're standing next to now.");
+	Preserve Trigger();
+	Set Deaths("Player 1", "Terran Beacon", Set To, 2);
+}
+
+//-----------------------------------------------------------------//

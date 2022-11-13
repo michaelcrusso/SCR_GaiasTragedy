@@ -1,0 +1,188 @@
+Trigger("Player 5"){
+Conditions:
+	Elapsed Time(Exactly, 0);
+
+Actions:
+	Create Unit("Player 5", "Terran Dropship", 1, "Dropship Start");
+	Order("Player 5", "Terran Dropship", "Dropship Start", "Dropship End", move);
+	Set Switch("Switch1", set);
+	Comment("Intro start");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 5"){
+Conditions:
+	Bring("Player 5", "Terran Dropship", "Dropship End", Exactly, 1);
+
+Actions:
+	Set Switch("Switch1", clear);
+	Play WAV("sound\\Misc\\TDrTra01.wav", 2490);
+	Create Unit("Player 5", "Terran Civilian", 4, "Create Mercs");
+	Wait(1000);
+	Comment("Create mercs");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1", "Player 2", "Player 3", "Player 4", "Player 5"){
+Conditions:
+	Command("Player 5", "Terran Dropship", Exactly, 1);
+
+Actions:
+	Run AI Script("+Vi4");
+	Set Alliance Status("Player 1", Ally);
+	Set Alliance Status("Player 2", Ally);
+	Set Alliance Status("Player 3", Ally);
+	Set Alliance Status("Player 4", Ally);
+	Set Alliance Status("Player 5", Ally);
+	Comment("Intro vision");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1", "Player 2", "Player 3", "Player 4", "Player 5"){
+Conditions:
+	Switch("Switch1", Set);
+	Elapsed Time(At most, 40);
+
+Actions:
+	Move Location("Player 5", "Terran Dropship", "Intro", "Follow P5");
+	Preserve Trigger();
+	Center View("Follow P5");
+	Comment("Intro follow");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1", "Player 2", "Player 3", "Player 4", "Player 5"){
+Conditions:
+	Elapsed Time(Exactly, 40);
+
+Actions:
+	Run AI Script("-Vi4");
+	Comment("Intro vision off");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Switch("Switch1", Not Set);
+
+Actions:
+	Run AI Script("-Vi1");
+	Run AI Script("-Vi2");
+	Run AI Script("-Vi3");
+	Preserve Trigger();
+	Comment("Allied vision off");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 2"){
+Conditions:
+	Switch("Switch1", Not Set);
+
+Actions:
+	Run AI Script("-Vi0");
+	Run AI Script("-Vi2");
+	Run AI Script("-Vi3");
+	Preserve Trigger();
+	Comment("Allied vision off");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 3"){
+Conditions:
+	Switch("Switch1", Not Set);
+
+Actions:
+	Run AI Script("-Vi0");
+	Run AI Script("-Vi1");
+	Run AI Script("-Vi3");
+	Preserve Trigger();
+	Comment("Allied vision off");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 4"){
+Conditions:
+	Switch("Switch1", Not Set);
+
+Actions:
+	Run AI Script("-Vi0");
+	Run AI Script("-Vi1");
+	Run AI Script("-Vi2");
+	Preserve Trigger();
+	Comment("Allied vision off");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1", "Player 2", "Player 3", "Player 4"){
+Conditions:
+	Bring("Player 5", "Terran Dropship", "Dropship End", Exactly, 1);
+
+Actions:
+	Display Text Message(Always Display, "Welcome to Gaia II, mercenaries.\r\n\r\nYour transport has touched down at the FPG's outpost the continent of Iros.\r\n\r\nThe Koga empire once restricted travel here, as the continent is overrun with strange\r\nmutants and rogue droids. You will find no shortage of work here, but first you will\r\nneed your power armor. \r\n\r\nStep down the ramp to obtain your MechaCorp power armor. Detailed information\r\nhas been provided for each model.");
+	Center View("Create Mercs");
+	Comment("Intro text");
+}
+
+//-----------------------------------------------------------------//
+
+
+Trigger("Player 1"){
+Conditions:
+	Command("Current Player", "Yggdrasill (Overlord)", Exactly, 1);
+	Elapsed Time(Exactly, 40);
+
+Actions:
+	Give Units to Player("Player 5", "Current Player", "Terran Civilian", 1, "Create Mercs");
+	Play WAV("sound\\Misc\\TRescue.wav", 1896);
+	Comment("Give mercs");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 2"){
+Conditions:
+	Command("Current Player", "Yggdrasill (Overlord)", Exactly, 1);
+	Elapsed Time(Exactly, 40);
+
+Actions:
+	Give Units to Player("Player 5", "Current Player", "Terran Civilian", 1, "Create Mercs");
+	Play WAV("sound\\Misc\\TRescue.wav", 1896);
+	Comment("Give mercs");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 3"){
+Conditions:
+	Command("Current Player", "Yggdrasill (Overlord)", Exactly, 1);
+	Elapsed Time(Exactly, 40);
+
+Actions:
+	Give Units to Player("Player 5", "Current Player", "Terran Civilian", 1, "Create Mercs");
+	Play WAV("sound\\Misc\\TRescue.wav", 1896);
+	Comment("Give mercs");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 4"){
+Conditions:
+	Command("Current Player", "Yggdrasill (Overlord)", Exactly, 1);
+	Elapsed Time(Exactly, 40);
+
+Actions:
+	Give Units to Player("Player 5", "Current Player", "Terran Civilian", 1, "Create Mercs");
+	Play WAV("sound\\Misc\\TRescue.wav", 1896);
+	Comment("Give mercs");
+}
+
+//-----------------------------------------------------------------//

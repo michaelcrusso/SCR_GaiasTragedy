@@ -1,0 +1,103 @@
+//<Sharpshooter Selection//>
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Alexei Stukov (Ghost)", "PassiveP1", Exactly, 1);
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Ground", Exactly, 1);
+	Bring("Player 1", "Terran Civilian", "Sharpshooter Info", Exactly, 1);
+	Deaths("Player 1", "Terran Beacon", Exactly, 2);
+
+Actions:
+	Set Deaths("Player 1", "Terran Beacon", Set To, 3);
+	Center View("Buy Sharpshooter");
+	Display Text Message(Always Display, "This is the sharpshooter. He is very cool. To buy him, switch your MCCS to active\r\nmode and select interact once again. To exit and view another power armor, simply\r\nselect interact a second time in passive mode.");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Invalid Location", Exactly, 1);
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Ground", Exactly, 1);
+	Deaths("Player 1", "Terran Beacon", At least, 3);
+
+Actions:
+	Remove Unit("Player 1", "Terran Civilian");
+	Create Unit("Player 1", "Terran Ghost", 1, "Sharpshooter Info");
+	Display Text Message(Always Display, "You have selected the sharpshooter. This concludes the brief tutorial phase of the\r\nMCCS system. You are now free to explore the world of Gaia II!");
+	Set Deaths("Player 1", "Terran Beacon", Set To, 0);
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Alexei Stukov (Ghost)", "PassiveP1", Exactly, 1);
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Ground", Exactly, 1);
+	Deaths("Player 1", "Terran Beacon", Exactly, 3);
+
+Actions:
+	Set Deaths("Player 1", "Terran Beacon", Set To, 4);
+	Center View("Create Mercs");
+	Display Text Message(Always Display, "You have exited the Sharpshooter selection menu.");
+	Preserve Trigger();
+	Move Unit("Player 1", "Terran Civilian", All, "Sharpshooter Info", "Create Mercs");
+	Display Text Message(Always Display, "BOOM BOOM BOOM");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Alexei Stukov (Ghost)", "PassiveP1", Exactly, 1);
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Ground", Exactly, 1);
+	Bring("Player 1", "Terran Civilian", "Sharpshooter Info", Exactly, 1);
+	Deaths("Player 1", "Terran Beacon", Exactly, 4);
+
+Actions:
+	Center View("Buy Sharpshooter");
+	Display Text Message(Always Display, "This is the sharpshooter. He is very cool. To buy him, switch your MCCS to active\r\nmode and select interact once again. To exit and view another power armor, simply\r\nselect interact a second time in passive mode.");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Invalid Location", Exactly, 1);
+	Bring("Player 1", "Alexei Stukov (Ghost)", "Ground", Exactly, 1);
+	Deaths("Player 1", "Terran Beacon", Exactly, 4);
+
+Actions:
+	Remove Unit("Player 1", "Terran Civilian");
+	Create Unit("Player 1", "Terran Ghost", 1, "Sharpshooter Info");
+	Display Text Message(Always Display, "You have selected the sharpshooter.");
+	Set Deaths("Player 1", "Terran Beacon", Set To, 0);
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Never();
+
+Actions:
+	Display Text Message(Always Display, "Exited Sharpshooter selection menu.");
+	Move Unit("Current Player", "Terran Civilian", 1, "Sharpshooter Info", "Create Mercs");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1", "Player 2", "Player 3", "Player 4"){
+Conditions:
+	Bring("Current Player", "Terran Civilian", "Stop", At least, 1);
+
+Actions:
+	Display Text Message(Always Display, "You must acquire a MechaCorp power armor suit before leaving the area.");
+	Move Unit("Current Player", "Terran Civilian", All, "Stop", "Create Mercs");
+	Preserve Trigger();
+	Comment("Pick class first");
+}
+
+//-----------------------------------------------------------------//

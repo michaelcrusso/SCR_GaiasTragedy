@@ -1,0 +1,97 @@
+//<MCCS Interaction modes//>
+
+Trigger("Player 2"){
+Conditions:
+	Deaths("Current Player", "Young Chrysalis", Exactly, 0);
+	Bring("Current Player", "Yggdrasill (Overlord)", "PassiveP2", Exactly, 1);
+
+Actions:
+	Move Unit("Current Player", "Any unit", All, "PassiveP2", "ActiveP2");
+	Preserve Trigger();
+	Display Text Message(Always Display, "MCCS Set to combat mode.");
+	Play WAV("staredit\\wav\\MCCSC.wav", 3862);
+	Set Deaths("Current Player", "Young Chrysalis", Set To, 1);
+	Comment("Set active mode");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 3"){
+Conditions:
+	Deaths("Current Player", "Young Chrysalis", Exactly, 0);
+	Bring("Current Player", "Yggdrasill (Overlord)", "PassiveP3", Exactly, 1);
+
+Actions:
+	Move Unit("Current Player", "Any unit", All, "PassiveP3", "ActiveP3");
+	Preserve Trigger();
+	Display Text Message(Always Display, "MCCS Set to combat mode.");
+	Play WAV("staredit\\wav\\MCCSC.wav", 3862);
+	Set Deaths("Current Player", "Young Chrysalis", Set To, 1);
+	Comment("Set active mode");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 4"){
+Conditions:
+	Deaths("Current Player", "Young Chrysalis", Exactly, 0);
+	Bring("Current Player", "Yggdrasill (Overlord)", "PassiveP4", Exactly, 1);
+
+Actions:
+	Move Unit("Current Player", "Any unit", All, "PassiveP4", "ActiveP4");
+	Preserve Trigger();
+	Display Text Message(Always Display, "MCCS Set to combat mode.");
+	Play WAV("staredit\\wav\\MCCSC.wav", 3862);
+	Set Deaths("Current Player", "Young Chrysalis", Set To, 1);
+	Comment("Set active mode");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 2"){
+Conditions:
+	Deaths("Current Player", "Young Chrysalis", Exactly, 0);
+	Bring("Current Player", "Yggdrasill (Overlord)", "ActiveP2", Exactly, 1);
+
+Actions:
+	Move Unit("Current Player", "Any unit", All, "ActiveP2", "PassiveP2");
+	Preserve Trigger();
+	Display Text Message(Always Display, "MCCS Set to passive mode.");
+	Set Deaths("Current Player", "Young Chrysalis", Set To, 1);
+	Comment("Set inactive mode");
+	Play WAV("staredit\\wav\\MCCSP.wav", 3463);
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 3"){
+Conditions:
+	Deaths("Current Player", "Young Chrysalis", Exactly, 0);
+	Bring("Current Player", "Yggdrasill (Overlord)", "ActiveP3", Exactly, 1);
+
+Actions:
+	Move Unit("Current Player", "Any unit", All, "ActiveP3", "PassiveP3");
+	Preserve Trigger();
+	Display Text Message(Always Display, "MCCS Set to passive mode.");
+	Set Deaths("Current Player", "Young Chrysalis", Set To, 1);
+	Comment("Set inactive mode");
+	Play WAV("staredit\\wav\\MCCSP.wav", 3463);
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 4"){
+Conditions:
+	Deaths("Current Player", "Young Chrysalis", Exactly, 0);
+	Bring("Current Player", "Yggdrasill (Overlord)", "ActiveP4", Exactly, 1);
+
+Actions:
+	Move Unit("Current Player", "Any unit", All, "ActiveP4", "PassiveP4");
+	Preserve Trigger();
+	Display Text Message(Always Display, "MCCS Set to passive mode.");
+	Set Deaths("Current Player", "Young Chrysalis", Set To, 1);
+	Comment("Set inactive mode");
+	Play WAV("staredit\\wav\\MCCSP.wav", 3463);
+}
+
+//-----------------------------------------------------------------//

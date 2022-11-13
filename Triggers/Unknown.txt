@@ -1,0 +1,79 @@
+
+
+Trigger("Player 6"){
+Conditions:
+	Switch("Switch2", Not Set);
+
+Actions:
+	Wait(0);
+	Set Switch("Switch2", set);
+	Wait(0);
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 7"){
+Conditions:
+	Switch("Switch2", Set);
+
+Actions:
+	Wait(0);
+	Set Switch("Switch2", clear);
+	Wait(0);
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 5"){
+Conditions:
+	Elapsed Time(Exactly, 40);
+
+Actions:
+	Order("Player 5", "Terran Civilian", "Create Mercs", "Send retards", move);
+	Comment("Herd retards - regards, the retard handler.");
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 5"){
+Conditions:
+	Bring("Player 5", "Terran Civilian", "Send retards", At least, 1);
+
+Actions:
+	Remove Unit At Location("Player 5", "Terran Civilian", All, "Send retards");
+	Comment("Dispose of retards - regards, the retard handler.");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Zerg Broodling", "PassiveP1", Exactly, 1);
+	Bring("Player 1", "Zerg Broodling", "Ground", Exactly, 1);
+	Bring("Player 1", "Zerg Zergling", "PassiveP1", Exactly, 1);
+
+Actions:
+	Move Location("Player 1", "Zerg Defiler", "Ground", "PassiveP1");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+Trigger("Player 1"){
+Conditions:
+	Bring("Player 1", "Zerg Broodling", "PassiveP1", Exactly, 1);
+	Bring("Player 1", "Zerg Broodling", "Ground", Exactly, 1);
+	Bring("Player 1", "Zerg Defiler", "PassiveP1", Exactly, 1);
+
+Actions:
+	Move Location("Player 1", "Zerg Zergling", "Ground", "PassiveP1");
+	Preserve Trigger();
+}
+
+//-----------------------------------------------------------------//
+
+
