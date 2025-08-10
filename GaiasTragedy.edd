@@ -1,0 +1,7 @@
+[main]
+input: Gaias-Tragedy-RPG.scx
+output: Gaias-Tragedy-EUD.scx
+
+[eudTurbo]
+[initialization.eps]
+[constants.eps]
